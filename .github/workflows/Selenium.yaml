@@ -26,6 +26,11 @@ jobs:
       - name: Installing all necessary packages
         run: pip install -r tests/frontend_selenium/requirements.txt
       - name: Deploying on localhost
-        run: yarn install & yarn serve --port 3060
+      - uses: borales/actions-yarn@v3.0.0
+        with:
+          cmd: install
+      - uses: borales/actions-yarn@v3.0.0
+        with:
+          cmd: serve --port 3060
       - name: Running the tests
         run: python -m pytest tests/frontend_selenium -v
