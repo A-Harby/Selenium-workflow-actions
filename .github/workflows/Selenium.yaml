@@ -34,5 +34,7 @@ jobs:
       - name: Sleep for 30 seconds
         run: sleep 60s
         shell: bash
-      - run: python -m pytest tests/frontend_selenium -v
+      - name: tests
+        working-directory: ./tests/frontend_selenium
+        run: python -m pytest -v
         #wait-on: 'http://localhost:3000'
