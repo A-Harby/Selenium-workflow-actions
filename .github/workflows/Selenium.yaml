@@ -3,7 +3,7 @@ name: Selenium Tests
 on:
   push:
     branches:
-      - selenium_more_tests
+      - main
   schedule:
     - cron: "0 6 * * *"
 
