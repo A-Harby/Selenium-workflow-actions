@@ -1,6 +1,12 @@
 name: Selenium Tests
 
 on:
+  issues:
+    types:
+      - opened
+  label:
+    types:
+      - created
   push:
     branches:
       - main
@@ -26,6 +32,6 @@ jobs:
       - name: Deploying on localhost2
         uses: borales/actions-yarn@v3.0.0
         with:
-          cmd: serve --port 3060
+          cmd: yarn serve --port 3060
       - name: Running the tests
         run: python -m pytest tests/frontend_selenium -v
