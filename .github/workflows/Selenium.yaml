@@ -31,5 +31,8 @@ jobs:
           node-version: 16
       - run: yarn install
       - run: yarn serve --port 3060 &
+      - name: Sleep for 30 seconds
+        run: sleep 60s
+        shell: bash
       - run: python -m pytest tests/frontend_selenium -v
         #wait-on: 'http://localhost:3000'
