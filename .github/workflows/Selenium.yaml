@@ -30,5 +30,9 @@ jobs:
         with:
           node-version: 16
       - run: yarn install
-      - run: yarn serve --port 3060 
-      - run: python -m pytest tests/frontend_selenium -v
+      - run: yarn serve --port 3060 &
+      - name: tests
+        run: python -m pytest tests/frontend_selenium -v
+        with:
+          working-directory: examples/v10/wait-on-vite
+          wait-on: 'http://localhost:3000'
