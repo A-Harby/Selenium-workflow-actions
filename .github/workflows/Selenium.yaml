@@ -10,7 +10,6 @@ on:
 jobs:
   selenium-run:
     runs-on: ubuntu-latest
-    container: cypress/browsers:node16.14.2-slim-chrome103-ff102
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -21,12 +20,12 @@ jobs:
       - name: Installing all necessary packages
         run: pip install -r tests/frontend_selenium/requirements.txt
       - name: Deploying on localhost
-        uses: actions/setup-node@v3
+        uses: borales/actions-yarn@v3.0.0
         with:
-          build: yarn install
-          start: yarn serve
-          wait-on: 'http://localhost:3060'
-          wait-on-timeout: 60
-          browser: chrome
+          cmd: install
+      - name: Deploying on localhost2
+        uses: borales/actions-yarn@v3.0.0
+        with:
+          cmd: serve --port 3060
       - name: Running the tests
         run: python -m pytest tests/frontend_selenium -v
