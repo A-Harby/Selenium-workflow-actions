@@ -33,6 +33,6 @@ jobs:
       - run: yarn serve --port 3060 &
       - name: tests
         run: python -m pytest tests/frontend_selenium -v
+        uses: ./
         with:
-          working-directory: examples/v10/wait-on-vite
           wait-on: 'http://localhost:3000'
