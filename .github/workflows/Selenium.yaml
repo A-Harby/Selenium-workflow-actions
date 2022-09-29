@@ -31,8 +31,8 @@ jobs:
           node-version: 16
       - run: yarn install
       - run: yarn serve --port 3060 &
-      - name: waits
-        uses: iFaxity/wait-on-action
+      - name: Wait on
+        uses: iFaxity/wait-on-action@v1
         with:
           resource: http://localhost:3060
       - name: tests
