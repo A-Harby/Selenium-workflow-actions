@@ -20,7 +20,7 @@ jobs:
       - name: Installing all necessary packages
         run: pip install -r tests/frontend_selenium/requirements.txt
       - name: Deploying on localhost
-        uses: borales/actions-yarn@v3.0.0
+        uses: actions/setup-node@v3
         with:
           build: yarn install
           start: yarn serve
