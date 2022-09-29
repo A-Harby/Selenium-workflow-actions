@@ -29,6 +29,6 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16
-      - run: npm install
-      - run: npm serve --port 3060 
+      - run: yarn install
+      - run: yarn serve --port 3060 
       - run: python -m pytest tests/frontend_selenium -v
