@@ -31,10 +31,10 @@ jobs:
           node-version: 16
       - run: yarn install
       - run: yarn serve --port 3060 &
-      - name: Sleep for 30 seconds
-        run: sleep 60s
-        shell: bash
+      - uses: ifaxity/wait-on-action
+        with:
+          resource: http://localhost:3060
       - name: tests
         working-directory: ./tests/frontend_selenium
         run: python -m pytest -v
-        #wait-on: 'http://localhost:3000'
+       
