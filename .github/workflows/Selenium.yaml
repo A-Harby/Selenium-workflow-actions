@@ -31,8 +31,5 @@ jobs:
           node-version: 16
       - run: yarn install
       - run: yarn serve --port 3060 &
-      - name: tests
-        run: python -m pytest tests/frontend_selenium -v
-        uses: ./
-        with:
-          wait-on: 'http://localhost:3000'
+      - run: python -m pytest tests/frontend_selenium -v
+        #wait-on: 'http://localhost:3000'
