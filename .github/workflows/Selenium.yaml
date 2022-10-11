@@ -33,7 +33,7 @@ jobs:
           resource: http://localhost:8080
       - name: Run tests
         working-directory: ./tests/frontend_selenium
-        env:
+        with:
           SELENIUM_SEED: ${{ secrets.SELENIUM_SEED }}
           SELENIUM_ADDRESS: ${{ secrets.SELENIUM_ADDRESS }}
         run: python -m pytest -vv -x
