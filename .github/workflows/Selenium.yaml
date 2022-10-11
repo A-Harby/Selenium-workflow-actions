@@ -36,5 +36,5 @@ jobs:
         env:
           SELENIUM_SEED: ${{ secrets.SELENIUM_SEED }}
           SELENIUM_ADDRESS: ${{ secrets.SELENIUM_ADDRESS }}
-        run: python -m pytest -v
+        run: python -m pytest -vv -x
        
