@@ -10,7 +10,6 @@ def get_seed():
     if (seed == ''):
         try:
             seed = os.environ["SELENIUM_SEED"]
-            print(seed)
         except:
             print("You must add account seed either in Config.ini or by exporting SELENIUM_SEED.")
     return str(seed)
