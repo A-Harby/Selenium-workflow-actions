@@ -49,6 +49,3 @@ jobs:
         working-directory: ./tests/frontend_selenium/utils
         run: |
           echo ${{ steps.run_tests.outputs.pytest-result }}
-          python test_tracker.py
-        env:
-          TEST_RESULT: ${{ steps.run_tests.outputs.pytest-result }}
