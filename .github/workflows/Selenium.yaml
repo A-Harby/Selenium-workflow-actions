@@ -29,10 +29,10 @@ jobs:
         uses: iFaxity/wait-on-action@v1
         with:
           resource: http://localhost:8080
-          
+
       - name: Run tests
         working-directory: ./tests/frontend_selenium
         env:
           SELENIUM_SEED: ${{ secrets.SELENIUM_SEED }}
           SELENIUM_ADDRESS: ${{ secrets.SELENIUM_ADDRESS }}
-        run: python -m pytest -v
+        run: python -m pytest tests/test_homepage.py::test_polka_page -v
