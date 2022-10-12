@@ -32,7 +32,7 @@ jobs:
      
       - name: Run tests
         working-directory: ./tests/frontend_selenium
-        env:
+        with:
           SELENIUM_SEED: ${{ secrets.SELENIUM_SEED }}
           SELENIUM_ADDRESS: ${{ secrets.SELENIUM_ADDRESS }}
         run: echo "::set-output name=pytest-result::$(python -m pytest tests/test_homepage.py::test_polka_page -v)"
