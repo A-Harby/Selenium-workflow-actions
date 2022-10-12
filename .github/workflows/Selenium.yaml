@@ -35,13 +35,16 @@ jobs:
         env:
           SELENIUM_SEED: ${{ secrets.SELENIUM_SEED }}
           SELENIUM_ADDRESS: ${{ secrets.SELENIUM_ADDRESS }}
-        run: echo "action_state=python -m pytest tests/test_homepage.py::test_polka_page -v" >> $GITHUB_ENV
+        run: |
+          python -m pytest -v --html=report.html
+          result=$( cat report.html)
+          echo "::set-output name=pytest-result::$result"
         id: run_tests
 
       - name: TestTracker report
         working-directory: ./tests/frontend_selenium/utils
         run: |
-          echo "${{ env.action_state }}"
+          echo ${{ steps.run_tests.outputs.pytest-result }}
           python test_tracker.py
         env:
-          TEST_RESULT: ${{ env.action_state }}
+          TEST_RESULT: ${{ steps.run_tests.outputs.pytest-result }}
