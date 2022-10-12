@@ -36,7 +36,7 @@ jobs:
         env:
           SELENIUM_SEED: ${{ secrets.SELENIUM_SEED }}
           SELENIUM_ADDRESS: ${{ secrets.SELENIUM_ADDRESS }}
-        run: python -m pytest tests/test_homepage.py::test_polka_page -v --html=report.html
+        run: python -m pytest tests/test_dedicate.py::test_dedicate_page -v --html=report.html
 
       - name: HI
         id: run_tests
