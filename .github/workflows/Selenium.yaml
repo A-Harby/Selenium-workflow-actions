@@ -35,4 +35,9 @@ jobs:
         env:
           SELENIUM_SEED: ${{ secrets.SELENIUM_SEED }}
           SELENIUM_ADDRESS: ${{ secrets.SELENIUM_ADDRESS }}
-        run: python -m pytest tests/test_homepage.py::test_polka_page -v
+        run: echo "::set-output name=pytest-result::$(python -m pytest tests/test_homepage.py::test_polka_page -v)"
+        id: run_tests
+
+      - name: TestTracker report
+        env:
+          TEST_RESULT: ${{ steps.run_tests.outputs.pytest-result }}
