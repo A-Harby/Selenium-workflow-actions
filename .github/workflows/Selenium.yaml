@@ -30,16 +30,20 @@ jobs:
         with:
           resource: http://localhost:8080
      
+
       - name: Run tests
         working-directory: ./tests/frontend_selenium
         env:
           SELENIUM_SEED: ${{ secrets.SELENIUM_SEED }}
           SELENIUM_ADDRESS: ${{ secrets.SELENIUM_ADDRESS }}
+        run: python -m pytest -v --html=report.html
+
+      - name: HI
+        id: run_tests
+        working-directory: ./tests/frontend_selenium
         run: |
-          python -m pytest -v --html=report.html
           result=$( cat report.html)
           echo "::set-output name=pytest-result::$result"
-        id: run_tests
 
       - name: TestTracker report
         working-directory: ./tests/frontend_selenium/utils
