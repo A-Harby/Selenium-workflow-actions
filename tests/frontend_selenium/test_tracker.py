@@ -9,3 +9,4 @@ myobj = {'somekey': result}
 x = requests.post(url, json = myobj)
 
 print(x.text)
+print(result)
