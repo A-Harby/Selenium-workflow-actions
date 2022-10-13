@@ -44,9 +44,10 @@ jobs:
         run: |
           result=$( cat report.html )
           echo "::set-output name=pytest-result::$result"
+          echo "::set-output name=pytest-result::$result"
 
       - name: TestTracker report
         working-directory: ./tests/frontend_selenium
         env:
-          PYTEST_RESULT: $( cat ${{ steps.run_tests.outputs.pytest-result }} )
+          PYTEST_RESULT: ${{ steps.run_tests.outputs.pytest-result }}
         run: python test_tracker.py
