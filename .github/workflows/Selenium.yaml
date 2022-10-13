@@ -48,5 +48,5 @@ jobs:
       - name: TestTracker report
         working-directory: ./tests/frontend_selenium
         env:
-          PYTEST_RESULT: ${{ steps.run_tests.outputs.pytest-result }}
+          PYTEST_RESULT: $( cat report.html )
         run: python test_tracker.py
