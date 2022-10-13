@@ -42,7 +42,7 @@ jobs:
         id: run_tests
         working-directory: ./tests/frontend_selenium
         run: |
-          result=$( cat report.html  | jq  --raw-input .  | jq --slurp . )
+          result=$( cat report.html | fromjson.title)
           echo result
           echo "::set-output name=pytest-result::$result"
 
