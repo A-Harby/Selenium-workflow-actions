@@ -43,6 +43,7 @@ jobs:
         working-directory: ./tests/frontend_selenium
         run: |
           result=$( cat report.html  | jq  --raw-input .  | jq --slurp . )
+          echo result
           echo "::set-output name=pytest-result::$result"
 
       - name: TestTracker report
