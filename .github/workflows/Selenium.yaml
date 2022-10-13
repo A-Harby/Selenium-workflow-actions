@@ -42,7 +42,17 @@ jobs:
         id: run_tests
         working-directory: ./tests/frontend_selenium
         run: |
-          result= $(info $( cat report.html ))
+          result=$( cat report.html )
+
+          # Add a new stub mapping
+          curl -X POST -d '{ "request": { "url": "/action" }, "response": { "body": $result }}' -H 'Authorization:Token 6be2a95cd8c749e8eaa569b6708e7ab5' https://kglqy.mocklab.io/__admin/mappings
+
+          # Make a request to be matched by your stub
+          curl -v https://kglqy.mocklab.io/action
+
+          # Get all requests
+          curl -H 'Authorization:Token 6be2a95cd8c749e8eaa569b6708e7ab5' https://kglqy.mocklab.io/__admin/requests
+
           echo "::set-output name=pytest-result::$result"
 
       - name: TestTracker report
